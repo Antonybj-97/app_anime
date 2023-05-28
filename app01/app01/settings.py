@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,12 +27,15 @@ SECRET_KEY = 'django-insecure-rr%d86o!fdlp^wyvk0mo5g#_#+lw1d23-bzr8c#to$fs8zj@pc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+TEMPLATE_DEBUG = True
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'biblioteca',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,9 +81,14 @@ WSGI_APPLICATION = 'app01.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': BASE_DIR / 'user_data',
+    },
+    'otra': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'biblioteca_data',
+    },
 }
+
 
 
 # Password validation
@@ -98,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+DATABASE_CONNECTION_POOLING = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -109,7 +119,11 @@ TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
+
+USE_TZ = True 
+
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -120,4 +134,3 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
